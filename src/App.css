@@ -1,0 +1,193 @@
+/* ── Layout ───────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: #0f0f11;
+  border-bottom: 1px solid #1e1e24;
+  gap: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e8e8ec;
+  letter-spacing: -0.01em;
+}
+
+.article-count-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5a5a6e;
+  background: #1a1a22;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Tone Selector ────────────────────────────────────────── */
+.tone-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tone-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5a5a6e;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tone-toggle {
+  display: flex;
+  background: #1a1a22;
+  border: 1px solid #2a2a35;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.tone-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #5a5a6e;
+}
+
+.tone-btn:hover {
+  color: #a0a0b8;
+}
+
+.tone-btn.active {
+  background: #2a2a3a;
+  color: #e8e8ec;
+}
+
+/* ── Generate Button ──────────────────────────────────────── */
+.generate-btn {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: #f5df4d;
+  color: #1a1400;
+  white-space: nowrap;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: #f0d835;
+}
+
+.generate-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Main ─────────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  padding: 24px 32px 48px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Generating Progress ──────────────────────────────────── */
+.generating-bar {
+  height: 2px;
+  background: #1a1a22;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.generating-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f5df4d, #ffe87a, #f5df4d);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.generating-message {
+  font-size: 13px;
+  color: #5a5a6e;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ── Error ────────────────────────────────────────────────── */
+.error-banner {
+  background: #2a1212;
+  border: 1px solid #4a2020;
+  color: #f08080;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* ── Articles Grid ────────────────────────────────────────── */
+.articles-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,0 +1,141 @@
+.audio-player {
+  background: #161620;
+  border: 1px solid #2e2e50;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+}
+
+.audio-player--error {
+  color: #f08080;
+  font-size: 13px;
+}
+
+.player-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* ── Play/Pause ──────────────────────────────────────────── */
+.play-pause {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: #f5df4d;
+  color: #1a1400;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.play-pause:hover {
+  background: #f0d835;
+}
+
+.play-pause:active {
+  transform: scale(0.93);
+}
+
+/* ── Time ────────────────────────────────────────────────── */
+.time-current,
+.time-total {
+  font-size: 12px;
+  font-weight: 500;
+  color: #5a5a7a;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  width: 34px;
+}
+
+.time-total {
+  text-align: right;
+}
+
+/* ── Progress ────────────────────────────────────────────── */
+.progress-wrapper {
+  flex: 1;
+  position: relative;
+  padding-top: 26px;
+}
+
+.progress-track {
+  height: 4px;
+  background: #252535;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress-track:hover .progress-fill {
+  background: #f0d835;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #f5df4d;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+  pointer-events: none;
+}
+
+.progress-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f0d835;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.progress-track:hover .progress-thumb {
+  opacity: 1;
+}
+
+/* ── Article Markers ─────────────────────────────────────── */
+.article-marker {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: #1e1e35;
+  border: 1px solid #3a3a6a;
+  color: #7070aa;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+
+.article-marker:hover {
+  background: #f5df4d;
+  border-color: #f5df4d;
+  color: #1a1400;
+}
+
+/* ── Speed Badge ─────────────────────────────────────────── */
+.speed-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a4a7a;
+  background: #1e1e2e;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
