@@ -90,7 +90,7 @@
 }
 
 .tone-btn.active {
-  background: #2e2400;
+  background: #2a1e0e;
   color: #f5df4d;
 }
 
@@ -223,7 +223,7 @@
   font-size: 10px;
   font-weight: 700;
   border-radius: 50%;
-  background: #2e2400;
+  background: #2a1e0e;
   color: #f5df4d;
 }
 

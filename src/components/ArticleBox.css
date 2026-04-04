@@ -7,27 +7,32 @@
 
 /* ── Empty state ───────────────────────────────────────────── */
 .article-box.empty {
-  background: #13131a;
-  border-color: #1e1e26;
+  background: #1a1a22;
+  border-color: #26263a;
 }
 
 .article-box.empty:hover {
-  border-color: #2a2a38;
+  border-color: #3a3820;
+  background: #1c1c24;
 }
 
 .article-box.empty.open {
-  background: #161620;
-  border-color: #2e2e42;
+  background: #1c1c26;
+  border-color: #38362a;
 }
 
 /* ── Filled state ──────────────────────────────────────────── */
 .article-box.filled {
-  background: #161620;
-  border-color: #2a2a3e;
+  background: #1c1c26;
+  border-color: #3a3820;
+}
+
+.article-box.filled:hover {
+  border-color: #504e28;
 }
 
 .article-box.filled.open {
-  border-color: #4040a0;
+  border-color: #706a30;
 }
 
 /* ── Header ────────────────────────────────────────────────── */
@@ -51,13 +56,13 @@
   font-size: 11px;
   font-weight: 600;
   border-radius: 50%;
-  background: #1e1e28;
-  color: #4a4a6a;
+  background: #22222e;
+  color: #5a5a7a;
 }
 
 .article-box.filled .article-number {
-  background: #2a2a48;
-  color: #9090d0;
+  background: #2a1e0e;
+  color: #f5df4d;
 }
 
 .article-preview {
@@ -73,7 +78,7 @@
 .article-placeholder {
   flex: 1;
   font-size: 13px;
-  color: #30303e;
+  color: #555568;
   font-style: italic;
 }
 
@@ -88,8 +93,8 @@
 /* ── Mode Toggle ────────────────────────────────────────────── */
 .mode-toggle {
   display: flex;
-  background: #1a1a26;
-  border: 1px solid #28283a;
+  background: #1e1e2a;
+  border: 1px solid #2e2e3e;
   border-radius: 6px;
   padding: 2px;
   gap: 2px;
@@ -109,16 +114,16 @@
   cursor: pointer;
   transition: all 0.12s ease;
   background: transparent;
-  color: #5a5a7a;
+  color: #6a6a8a;
 }
 
 .mode-btn:hover {
-  color: #9090b8;
+  color: #a0a0c0;
 }
 
 .mode-btn.active {
-  background: #2e2e50;
-  color: #b0b0e8;
+  background: #2a1e0e;
+  color: #f5df4d;
 }
 
 /* ── Clear Button ────────────────────────────────────────────── */
@@ -131,7 +136,7 @@
   border: none;
   border-radius: 4px;
   background: transparent;
-  color: #40404e;
+  color: #505060;
   font-size: 11px;
   cursor: pointer;
   transition: all 0.12s ease;
@@ -151,8 +156,8 @@
   max-height: 320px;
   padding: 12px;
   border: none;
-  border-top: 1px solid #1e1e2e;
-  background: #0f0f18;
+  border-top: 1px solid #26263a;
+  background: #141420;
   color: #c8c8e0;
   font-family: 'Inter', -apple-system, sans-serif;
   font-size: 13px;
@@ -163,9 +168,9 @@
 }
 
 .article-textarea:focus {
-  background: #111120;
+  background: #161624;
 }
 
 .article-textarea::placeholder {
-  color: #2a2a3a;
+  color: #444458;
 }
