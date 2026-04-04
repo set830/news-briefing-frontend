@@ -14,8 +14,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 32px;
-  background: #0f0f11;
-  border-bottom: 1px solid #1e1e24;
+  background: #18181f;
+  border-bottom: 1px solid #2a2a1a;
   gap: 16px;
 }
 
@@ -34,11 +34,12 @@
 
 .article-count-badge {
   font-size: 12px;
-  font-weight: 500;
-  color: #5a5a6e;
-  background: #1a1a22;
+  font-weight: 600;
+  color: #c8a800;
+  background: #2a2200;
   padding: 3px 8px;
   border-radius: 20px;
+  border: 1px solid #3a3000;
 }
 
 .header-right {
@@ -57,15 +58,15 @@
 .tone-label {
   font-size: 12px;
   font-weight: 500;
-  color: #5a5a6e;
+  color: #6a6a7e;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .tone-toggle {
   display: flex;
-  background: #1a1a22;
-  border: 1px solid #2a2a35;
+  background: #1e1e28;
+  border: 1px solid #2e2e3e;
   border-radius: 8px;
   padding: 3px;
   gap: 2px;
@@ -81,16 +82,16 @@
   cursor: pointer;
   transition: all 0.15s ease;
   background: transparent;
-  color: #5a5a6e;
+  color: #6a6a7e;
 }
 
 .tone-btn:hover {
-  color: #a0a0b8;
+  color: #b0b0c8;
 }
 
 .tone-btn.active {
-  background: #2a2a3a;
-  color: #e8e8ec;
+  background: #2e2400;
+  color: #f5df4d;
 }
 
 /* ── Generate Button ──────────────────────────────────────── */
@@ -126,8 +127,8 @@
 .spinner {
   width: 13px;
   height: 13px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
+  border: 2px solid rgba(26, 20, 0, 0.3);
+  border-top-color: #1a1400;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;
@@ -149,7 +150,7 @@
 /* ── Generating Progress ──────────────────────────────────── */
 .generating-bar {
   height: 2px;
-  background: #1a1a22;
+  background: #22222e;
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 16px;
@@ -169,7 +170,7 @@
 
 .generating-message {
   font-size: 13px;
-  color: #5a5a6e;
+  color: #c8a800;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -183,6 +184,53 @@
   padding: 12px 16px;
   font-size: 13px;
   margin-bottom: 20px;
+}
+
+/* ── How To ───────────────────────────────────────────────── */
+.how-to {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 6px;
+  padding: 14px 18px;
+  background: #1c1c26;
+  border: 1px solid #3a3820;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #a0a0b8;
+  line-height: 1.5;
+}
+
+.how-to-step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.how-to-step strong {
+  color: #e8e8ec;
+  font-weight: 600;
+}
+
+.how-to-num {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  background: #2e2400;
+  color: #f5df4d;
+}
+
+.how-to-divider {
+  color: #3a3a4e;
+  font-size: 16px;
+  line-height: 1;
 }
 
 /* ── Articles Grid ────────────────────────────────────────── */
