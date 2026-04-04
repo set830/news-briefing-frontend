@@ -112,9 +112,7 @@ function App() {
           <span className="how-to-divider">·</span>
           <span className="how-to-step"><span className="how-to-num">2</span>Choose <strong>Summarize</strong> for key points or <strong>Full Article</strong> to read as-is</span>
           <span className="how-to-divider">·</span>
-          <span className="how-to-step"><span className="how-to-num">3</span>Pick a <strong>Tone</strong> — conversational or matching the article's voice</span>
-          <span className="how-to-divider">·</span>
-          <span className="how-to-step"><span className="how-to-num">4</span>Hit <strong>Generate &amp; Play</strong> for your personal audio briefing</span>
+          <span className="how-to-step"><span className="how-to-num">3</span>Hit <strong>Generate &amp; Play</strong> for your personal audio briefing</span>
         </div>
 
         {isGenerating && (

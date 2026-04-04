@@ -1,6 +1,6 @@
 .audio-player {
-  background: #161620;
-  border: 1px solid #2e2e50;
+  background: #1c1c26;
+  border: 1px solid #3a3820;
   border-radius: 10px;
   padding: 14px 18px;
   margin-bottom: 24px;
@@ -46,7 +46,7 @@
 .time-total {
   font-size: 12px;
   font-weight: 500;
-  color: #5a5a7a;
+  color: #7a7a8a;
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
   width: 34px;
@@ -65,7 +65,7 @@
 
 .progress-track {
   height: 4px;
-  background: #252535;
+  background: #2e2e3e;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
@@ -109,9 +109,9 @@
   height: 18px;
   padding: 0 4px;
   border-radius: 9px;
-  background: #1e1e35;
-  border: 1px solid #3a3a6a;
-  color: #7070aa;
+  background: #2a2400;
+  border: 1px solid #4a4000;
+  color: #c8a800;
   font-size: 9px;
   font-weight: 700;
   cursor: pointer;
@@ -128,14 +128,36 @@
   color: #1a1400;
 }
 
-/* ── Speed Badge ─────────────────────────────────────────── */
-.speed-badge {
+/* ── Speed Toggle ────────────────────────────────────────── */
+.speed-toggle {
+  display: flex;
+  background: #1e1e2a;
+  border: 1px solid #2e2e3e;
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
   flex-shrink: 0;
+}
+
+.speed-btn {
+  padding: 3px 8px;
+  border: none;
+  border-radius: 4px;
   font-size: 11px;
   font-weight: 600;
-  color: #4a4a7a;
-  background: #1e1e2e;
-  padding: 3px 7px;
-  border-radius: 4px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  background: transparent;
+  color: #6a6a8a;
   letter-spacing: 0.02em;
+}
+
+.speed-btn:hover {
+  color: #a0a0c0;
+}
+
+.speed-btn.active {
+  background: #2a1e0e;
+  color: #f5df4d;
 }

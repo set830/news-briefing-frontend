@@ -8,6 +8,7 @@ function AudioPlayer({ audio, audioType, articleBreaks }) {
   const [duration, setDuration] = useState(0);
   const [objectUrl, setObjectUrl] = useState(null);
   const [decodeError, setDecodeError] = useState(false);
+  const [speed, setSpeed] = useState(1.2);
 
   // Convert base64 to blob URL whenever audio prop changes
   useEffect(() => {
@@ -37,7 +38,7 @@ function AudioPlayer({ audio, audioType, articleBreaks }) {
     if (!objectUrl || !audioRef.current) return;
     const el = audioRef.current;
     el.src = objectUrl;
-    el.playbackRate = 1.2;
+    el.playbackRate = speed;
     el.load();
     el.play().then(() => setIsPlaying(true)).catch(() => {});
   }, [objectUrl]);
@@ -60,6 +61,11 @@ function AudioPlayer({ audio, audioType, articleBreaks }) {
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) setDuration(audioRef.current.duration);
+  };
+
+  const handleSpeedChange = (newSpeed) => {
+    setSpeed(newSpeed);
+    if (audioRef.current) audioRef.current.playbackRate = newSpeed;
   };
 
   const handleEnded = () => {
@@ -145,7 +151,17 @@ function AudioPlayer({ audio, audioType, articleBreaks }) {
 
         <span className="time-total">{fmt(duration)}</span>
 
-        <span className="speed-badge">1.2×</span>
+        <div className="speed-toggle">
+          {[1, 1.2, 1.5].map(s => (
+            <button
+              key={s}
+              className={`speed-btn ${speed === s ? 'active' : ''}`}
+              onClick={() => handleSpeedChange(s)}
+            >
+              {s}×
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
