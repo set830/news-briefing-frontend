@@ -134,7 +134,15 @@ function App() {
         )}
 
         {audioData && !isGenerating && (
-          <AudioPlayer audio={audioData.audio} audioType={audioData.audioType} articleBreaks={audioData.articleBreaks} />
+          <>
+            <AudioPlayer audio={audioData.audio} audioType={audioData.audioType} articleBreaks={audioData.articleBreaks} />
+            <div className="script-panel">
+              <div className="script-header">
+                <span className="script-title">Script</span>
+              </div>
+              <div className="script-body">{audioData.script}</div>
+            </div>
+          </>
         )}
 
         <div className="articles-grid">

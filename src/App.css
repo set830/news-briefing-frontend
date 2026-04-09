@@ -186,6 +186,38 @@
   margin-bottom: 20px;
 }
 
+/* ── Script Panel ─────────────────────────────────────────── */
+.script-panel {
+  background: #1c1c26;
+  border: 1px solid #3a3820;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.script-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid #2a2a1a;
+}
+
+.script-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c8a800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.script-body {
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #b0b0cc;
+  white-space: pre-wrap;
+}
+
 /* ── How To ───────────────────────────────────────────────── */
 .how-to {
   display: flex;
