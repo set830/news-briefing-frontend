@@ -14,6 +14,7 @@ function App() {
   );
   const [tone, setTone] = useState('conversational');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generatingStep, setGeneratingStep] = useState(null); // 'script' | 'audio'
   const [audioData, setAudioData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -33,28 +34,33 @@ function App() {
     setAudioData(null);
     setIsGenerating(true);
 
-    try {
-      const res = await fetch(`${API_URL}/api/generate`, {
+    const fetchStep = async (path, body) => {
+      const res = await fetch(`${API_URL}${path}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ articles, tone }),
+        body: JSON.stringify(body),
       });
-
       if (!res.ok) {
         let message = 'Generation failed';
-        try {
-          const err = await res.json();
-          message = err.error || message;
-        } catch {}
+        try { const e = await res.json(); message = e.error || message; } catch {}
         throw new Error(message);
       }
+      return res.json();
+    };
 
-      const data = await res.json();
-      setAudioData(data);
+    try {
+      setGeneratingStep('script');
+      const { script, articleBreaks } = await fetchStep('/api/generate-script', { articles, tone });
+
+      setGeneratingStep('audio');
+      const { audio, audioType } = await fetchStep('/api/generate-audio', { script });
+
+      setAudioData({ script, audio, audioType, articleBreaks });
     } catch (err) {
       setError(err.message);
     } finally {
       setIsGenerating(false);
+      setGeneratingStep(null);
     }
   };
 
@@ -123,7 +129,9 @@ function App() {
 
         {isGenerating && (
           <div className="generating-message">
-            Processing {filledCount} article{filledCount !== 1 ? 's' : ''} with Claude, then generating audio...
+            {generatingStep === 'script'
+              ? `Processing ${filledCount} article${filledCount !== 1 ? 's' : ''} with Claude...`
+              : 'Generating audio...'}
           </div>
         )}
 
