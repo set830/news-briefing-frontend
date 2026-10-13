@@ -48,13 +48,46 @@ function App() {
       return res.json();
     };
 
+    const fetchAudio = async (script) => {
+      const res = await fetch(`${API_URL}/api/generate-audio`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ script }),
+      });
+      if (!res.ok) {
+        let message = 'Audio generation failed';
+        try { const e = await res.json(); message = e.error || message; } catch {}
+        throw new Error(message);
+      }
+      // Read SSE stream; accumulate chunks until we have a complete data: line
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        // Only try to parse once we see a newline after "data: "
+        const dataIdx = buffer.indexOf('data: ');
+        if (dataIdx !== -1) {
+          const newlineIdx = buffer.indexOf('\n', dataIdx);
+          if (newlineIdx !== -1) {
+            const line = buffer.slice(dataIdx + 6, newlineIdx).trim();
+            const payload = JSON.parse(line);
+            if (payload.error) throw new Error(payload.error);
+            if (payload.audio) return payload;
+          }
+        }
+      }
+      throw new Error('No audio data received');
+    };
+
     try {
       setGeneratingStep('script');
       const { script, articleBreaks } = await fetchStep('/api/generate-script', { articles, tone });
 
       setGeneratingStep('audio');
-      const keepAwake = setInterval(() => {}, 100);
-      const { audio, audioType } = await fetchStep('/api/generate-audio', { script }).finally(() => clearInterval(keepAwake));
+      const { audio, audioType } = await fetchAudio(script);
 
       setAudioData({ script, audio, audioType, articleBreaks });
     } catch (err) {
