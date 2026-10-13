@@ -48,36 +48,13 @@ function App() {
       return res.json();
     };
 
-    const fetchAudio = async (script) => {
-      const res = await fetch(`${API_URL}/api/generate-audio`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ script }),
-      });
-      if (!res.ok) {
-        let message = 'Audio generation failed';
-        try { const e = await res.json(); message = e.error || message; } catch {}
-        throw new Error(message);
-      }
-      const text = await res.text();
-      const lines = text.split('\n');
-      for (let i = lines.length - 1; i >= 0; i--) {
-        const line = lines[i].trim();
-        if (line.startsWith('data: ')) {
-          const data = JSON.parse(line.slice(6));
-          if (data.error) throw new Error(data.error);
-          if (data.audio) return data;
-        }
-      }
-      throw new Error('No audio data received');
-    };
-
     try {
       setGeneratingStep('script');
       const { script, articleBreaks } = await fetchStep('/api/generate-script', { articles, tone });
 
       setGeneratingStep('audio');
-      const { audio, audioType } = await fetchAudio(script);
+      const keepAwake = setInterval(() => {}, 100);
+      const { audio, audioType } = await fetchStep('/api/generate-audio', { script }).finally(() => clearInterval(keepAwake));
 
       setAudioData({ script, audio, audioType, articleBreaks });
     } catch (err) {
